@@ -12,6 +12,7 @@ Based on [Flask-User-Starter-App](https://github.com/lingthio/Flask-User-starter
 - `pip install -r requirements.txt`
 - `cp app/local_settings_example.py app/local_settings.py`
 - `python manage.py init_db`
+- `python manage.py add_restaurants`
 - To add test users:
     - `python manage.py add_users`
     - Test User: member@example.com , Password1
