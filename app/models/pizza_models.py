@@ -24,5 +24,6 @@ class PromoCode(db.Model):
 
 class Pizza(db.Model):
     __tablename__ = 'pizzas'
+    id = db.Column(db.Integer(), primary_key=True)
     pizza_type_id = db.Column(db.Integer(), db.ForeignKey('pizza_types.id'), nullable=False)
     date_time = db.Column(db.DateTime, nullable=False)
