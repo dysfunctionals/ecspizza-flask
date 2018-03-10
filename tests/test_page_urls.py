@@ -40,3 +40,7 @@ def test_page_urls(client):
     # Logout
     response = client.get(url_for('user.logout'), follow_redirects=True)
     assert response.status_code==200
+
+    # Not Found
+    response = client.get('fhkjdsf', follow_redirects=True)
+    assert response.status_code == 404

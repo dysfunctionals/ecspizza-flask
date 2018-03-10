@@ -31,3 +31,9 @@ def admin_page():
 @login_required
 def user_profile_page():
     return render_template('pages/user_profile_page.html')
+
+
+@main_blueprint.route('/', defaults={'path': ''})
+@main_blueprint.route('/<path:path>')
+def catch_all(path):
+    return render_template('pages/404.html'), 404
