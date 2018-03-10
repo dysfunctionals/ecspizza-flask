@@ -1,4 +1,5 @@
 import datetime
+import uuid
 
 from flask import current_app
 from flask_script import Command
@@ -45,7 +46,8 @@ def find_or_create_user(first_name, last_name, email, password, role=None):
                     last_name=last_name,
                     password=current_app.user_manager.hash_password(password),
                     active=True,
-                    confirmed_at=datetime.datetime.utcnow())
+                    confirmed_at=datetime.datetime.utcnow(),
+                    uuid=str(uuid.uuid4()))
         if role:
             user.roles.append(role)
         db.session.add(user)

@@ -13,6 +13,7 @@ from app import db
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
+    uuid = db.Column(db.String(36), nullable=False)
 
     # User authentication information (required for Flask-User)
     email = db.Column(db.Unicode(255), nullable=False, server_default=u'', unique=True)
