@@ -26,6 +26,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.Unicode(50), nullable=False, server_default=u'')
     last_name = db.Column(db.Unicode(50), nullable=False, server_default=u'')
     display_name = db.Column(db.Unicode(50), nullable=False, server_default=u'Anonymous')
+    soton_username = db.Column(db.String(16), nullable=True)
     # Relationships
     roles = db.relationship('Role', secondary='users_roles',
                             backref=db.backref('users', lazy='dynamic'))
