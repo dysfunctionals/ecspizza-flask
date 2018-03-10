@@ -58,8 +58,6 @@ class MyRegisterForm(RegisterForm):
 
 # Define the User profile form
 class UserProfileForm(FlaskForm):
-    first_name = StringField('First name', validators=[
-        validators.DataRequired('First name is required')])
-    last_name = StringField('Last name', validators=[
-        validators.DataRequired('Last name is required')])
+    first_name = StringField('First name', validators=[validators.DataRequired('First name is required')])
+    last_name = StringField('Last name', validators=[validators.DataRequired('Last name is required')])
     submit = SubmitField('Save')
