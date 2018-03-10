@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <p class="text-center card-text"><img class="rounded img-fluid" src="../static/img/pizza.jpg"></p>
                         <p class="text-center">
-                            <a class="btn btn-info" role="button" href="#">View Codes</a>
+                            <a class="btn btn-info" role="button" href="{{ url_for('restaurants.view',slug=restaurant.slug) }}">View Codes</a>
                         </p>
                     </div>
                 </div>

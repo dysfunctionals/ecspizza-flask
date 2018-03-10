@@ -1,0 +1,49 @@
+{% extends "common/page_base.html" %}  {# common/page_base.html extends layout.html #}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">{{ restaurant.name }}: Codes</h1>
+            </div>
+        </div>
+        <div class="row">
+            <p><a href="{{ url_for('restaurants.index') }}">Back to Restaurants</a></p>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Discount Codes for Pizzazz</h5>
+                    </div>
+                    <div class="card-body">
+                        {% if promo_count == 0 %}
+                            <p>No Discounts available :(</p>
+                        {% else %}
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Description</th>
+                                            <th>Expiry</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            {% for code in restaurant.promo_codes %}
+                                            <tr>
+                                                <td>{{ code.value }}</td>
+                                                <td>{{ code.description }}</td>
+                                                <td>{{ code.expiry_date }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                    </tbody>
+                                </table>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
