@@ -17,6 +17,8 @@ def test_page_urls(client):
     assert response.status_code==200
     response = client.get(url_for('main.home'), follow_redirects=True)
     assert response.status_code==200
+    response = client.get(url_for('main.leaderboard'), follow_redirects=True)
+    assert response.status_code == 200
 
     # Edit User Profile page
     response = client.get(url_for('main.user_profile_page'), follow_redirects=True)
