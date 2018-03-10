@@ -14,3 +14,10 @@ def home():
     d = {"status": 401, "message": "No resources here"}
     return jsonify(d)
 
+@api_blueprint.route('/user/<email>')
+def user(email):
+    d = {
+            "status": 200,
+            "display_name": "David Tyoember"
+        }
+    return jsonify(d)
