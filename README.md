@@ -14,5 +14,7 @@ Based on [Flask-User-Starter-App](https://github.com/lingthio/Flask-User-starter
 - `python manage.py init_db`
 - Now run the dev server: `python manage.py runserver`
 
+**Note: registration sends a verification email, so you must have Flask mail sending configured for that to work.**
+
 ## Run the tests
 `py.test tests/`
