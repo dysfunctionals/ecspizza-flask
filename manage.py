@@ -16,6 +16,7 @@ manager = Manager(create_app)
 manager.add_command('db', MigrateCommand)
 manager.add_command('init_db', InitDbCommand)
 manager.add_command('add_users', AddUsersCommand)
+manager.add_command('add_restaurants', AddRestaurantsCommand)
 
 if __name__ == "__main__":
     # python manage.py                      # shows available commands
