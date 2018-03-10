@@ -15,7 +15,7 @@ def create_restaurants():
     """ Populates restaurants """
 
     add_restaurant("Pizzazz Pizza","pizzazz")
-    add_restaurant("Dominoes","dominoes")
+    add_restaurant("Dominos","dominos")
     add_restaurant("Pizza Hut","pizzahut")
     # Save to DB
     db.session.commit()
