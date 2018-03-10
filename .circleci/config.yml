@@ -49,6 +49,7 @@ jobs:
             . venv/bin/activate
             cp app/local_settings_example.py app/local_settings.py
             python manage.py init_db
+            python manage.py add_users
             py.test tests/
       - store_artifacts:
           path: test-reports
