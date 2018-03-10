@@ -51,7 +51,9 @@ def create_app(extra_config_settings={}):
 
     # Register blueprints
     from app.views.misc_views import main_blueprint
+    from app.views.api import api_blueprint
     app.register_blueprint(main_blueprint)
+    app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
     # Define bootstrap_is_hidden_field for flask-bootstrap's bootstrap_wtf.html
     from wtforms.fields import HiddenField
