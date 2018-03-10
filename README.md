@@ -1,7 +1,5 @@
 # ecs.pizza
 
-[![CircleCI](https://circleci.com/gh/dysfunctionals/ecspizza-flask/tree/master.svg?style=svg)](https://circleci.com/gh/dysfunctionals/ecspizza-flask/tree/master)
-
 This is the main Flask app for ecs.pizza
 
 Based on [Flask-User-Starter-App](https://github.com/lingthio/Flask-User-starter-app).
