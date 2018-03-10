@@ -19,6 +19,11 @@ main_blueprint = Blueprint('main', __name__, template_folder='templates')
 def home():
     return render_template('pages/home.html')
 
+@main_blueprint.route('/leaderboard')
+@login_required
+def leaderboard():
+    return render_template('pages/leaderboard.html')
+
 
 # The Admin page is accessible to users with the 'admin' role
 @main_blueprint.route('/admin')

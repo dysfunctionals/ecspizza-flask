@@ -1,0 +1,55 @@
+{% extends "common/page_base.html" %}  {# common/page_base.html extends layout.html #}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Leaderboard</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Main Leaderboard</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Amount of Pizza</th>
+                                        <th>More Info</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Smith</td>
+                                        <td>4</td>
+                                        <td><button class="btn btn-info" type="button">More Info</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>John Smith</td>
+                                        <td>4</td>
+                                        <td><button class="btn btn-info" type="button">More Info</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>John Smith</td>
+                                        <td>4</td>
+                                        <td><button class="btn btn-info" type="button">More Info</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>John Smith</td>
+                                        <td>4</td>
+                                        <td><button class="btn btn-info" type="button">More Info</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
