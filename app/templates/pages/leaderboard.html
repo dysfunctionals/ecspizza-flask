@@ -20,30 +20,15 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Amount of Pizza</th>
-                                        <th>More Info</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for u in data %}
                                     <tr>
-                                        <td>John Smith</td>
-                                        <td>4</td>
-                                        <td><button class="btn btn-info" type="button">More Info</button></td>
+                                        <td>{{ u.name }}</td>
+                                        <td>{{ u.amount }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>John Smith</td>
-                                        <td>4</td>
-                                        <td><button class="btn btn-info" type="button">More Info</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>John Smith</td>
-                                        <td>4</td>
-                                        <td><button class="btn btn-info" type="button">More Info</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>John Smith</td>
-                                        <td>4</td>
-                                        <td><button class="btn btn-info" type="button">More Info</button></td>
-                                    </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
