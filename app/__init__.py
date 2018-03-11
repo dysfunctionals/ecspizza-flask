@@ -39,7 +39,7 @@ def create_app(extra_config_settings={}):
 
     # Setup Flask-Extensions -- do this _after_ app config has been loaded
     # Extension 1: Flask-Uploads
-    app.config['UPLOADED_PHOTOS_DEST'] = 'static/uploads/pizza_img'
+    app.config['UPLOADED_PHOTOS_DEST'] = 'app/static/uploads/pizza_img'
     configure_uploads(app, photos)
 
     # Setup Flask-SQLAlchemy
