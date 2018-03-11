@@ -31,6 +31,15 @@ class User(db.Model, UserMixin):
     # Relationships
     roles = db.relationship('Role', secondary='users_roles',
                             backref=db.backref('users', lazy='dynamic'))
+    tokens = db.relationship('AuthToken', backref='users', lazy=True)
+
+
+class AuthToken(db.Model):
+    __tablename__ = 'auth_tokens'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    auth_token = db.Column(db.String(64), nullable=False)
+    expiry = db.Column(db.DateTime(), nullable=False)
 
 
 # Define the Role data model
