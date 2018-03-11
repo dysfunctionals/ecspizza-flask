@@ -7,112 +7,96 @@
                 <h1 class="text-center">My Pizza</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">My Stats</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Column 1</th>
-                                        <th>Column 2</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Cell 1</td>
-                                        <td>Cell 2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cell 3</td>
-                                        <td>Cell 4</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+        <div class="card-group">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">My Stats</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Column 1</th>
+                                    <th>Column 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cell 1</td>
+                                    <td>Cell 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Cell 3</td>
+                                    <td>Cell 4</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Quick Links</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Column 1</th>
-                                        <th>Column 2</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Cell 1</td>
-                                        <td>Cell 2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cell 3</td>
-                                        <td>Cell 4</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">New Pizza</h5>
+                </div>
+                <div class="card-body">
+                    <p>Simply submit a photo of your pizza here to add it to your account.
+                    (Support for multi-user pizzas is coming soon.)</p>
+                    <form method=POST enctype=multipart/form-data action="{{ url_for('pizza.upload') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="customFile" name="photo">
+                          <label class="custom-file-label" for="customFile">Choose Image File</label>
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                            <label for="type">Select the type of pizza: </label>
+                            <select name="type" class="form-control">
+                                {% for type in pizza_types %}
+                                    <option value="{{ type.slug }}">{{ type.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <input type="submit" class="btn">
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Pizza 1</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="text-center card-text"><img class="rounded img-fluid" src="static/img/pizza.jpg"></p>
-                        <p>Type: Pepperoni Special</p>
-                        <p>Location: Pizzazz Pizza</p>
-                        <p class="text-center">
-                            <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
-                        </p>
-                    </div>
-                </div>
+        <div class="card-deck" style="margin: 10px 0 0 0">
+          <div class="card">
+            <img class="card-img-top" src="static/img/pizza.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+                <p class="card-text">Type: Pepperoni Special</p>
+                <p class="card-text">Location: Pizzazz Pizza</p>
+                <p class="card-text text-center">
+                    <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
+                </p>
             </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Pizza 1</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="text-center card-text"><img class="rounded img-fluid" src="static/img/pizza.jpg"></p>
-                        <p>Type: Pepperoni Special</p>
-                        <p>Location: Pizzazz Pizza</p>
-                        <p class="text-center">
-                            <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
-                        </p>
-                    </div>
-                </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="static/img/pizza.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+                <p class="card-text">Type: Pepperoni Special</p>
+                <p class="card-text">Location: Pizzazz Pizza</p>
+                <p class="card-text text-center">
+                    <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
+                </p>
             </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Pizza 1</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="text-center card-text"><img class="rounded img-fluid" src="static/img/pizza.jpg"></p>
-                        <p>Type: Pepperoni Special</p>
-                        <p>Location: Pizzazz Pizza</p>
-                        <p class="text-center">
-                            <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
-                        </p>
-                    </div>
-                </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="static/img/pizza.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+                <p class="card-text">Type: Pepperoni Special</p>
+                <p class="card-text">Location: Pizzazz Pizza</p>
+                <p class="card-text text-center">
+                    <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
+                </p>
             </div>
+          </div>
         </div>
     </div>
 {% endblock %}
