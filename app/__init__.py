@@ -55,6 +55,9 @@ def create_app(extra_config_settings={}):
     app.register_blueprint(main_blueprint)
     app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
+    #Make sure CSRF doesn't block our API requests
+    csrf_protect.exempt(api_blueprint)
+
     # Define bootstrap_is_hidden_field for flask-bootstrap's bootstrap_wtf.html
     from wtforms.fields import HiddenField
 
