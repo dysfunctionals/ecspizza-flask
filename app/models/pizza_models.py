@@ -27,3 +27,15 @@ class Pizza(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     pizza_type_id = db.Column(db.Integer(), db.ForeignKey('pizza_types.id'), nullable=False)
     date_time = db.Column(db.DateTime, nullable=False)
+
+    @staticmethod
+    def count_total():
+        return Pizza.query.count()
+
+    @staticmethod
+    def total_area(): # terms of pi
+        return Pizza.count_total() * (14 * 0.5 * 0.0254)**2
+
+    @staticmethod
+    def total_radius():
+        return Pizza.total_area() ** 0.5

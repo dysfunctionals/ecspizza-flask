@@ -4,6 +4,7 @@ from flask_user import current_user, login_required, roles_accepted
 
 from app import db
 from app.models.user_models import UserProfileForm
+from app.models.pizza_models import Pizza
 
 # When using a Flask app factory we must use a blueprint to avoid needing 'app' for '@app.route'
 main_blueprint = Blueprint('main', __name__, template_folder='templates')
@@ -27,10 +28,16 @@ def admin_page():
     return render_template('pages/admin_page.html')
 
 
-@main_blueprint.route('/pages/profile', methods=['GET'])
+@main_blueprint.route('/pages/profile')
 @login_required
 def user_profile_page():
     return render_template('pages/user_profile_page.html')
+
+@main_blueprint.route('/stats',)
+@login_required
+def stats():
+    radius = Pizza.total_radius()
+    return render_template('pages/stats.html', radius=radius)
 
 
 @main_blueprint.route('/', defaults={'path': ''})

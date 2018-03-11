@@ -1,0 +1,52 @@
+{% extends "common/page_base.html" %}  {# common/page_base.html extends layout.html #}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Stats</h1>
+            </div>
+        </div>
+
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Equivalent Total Pizza</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Graphs</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="container">
+                <p class="text-center">This map shows the radius of the equivalent pizza that has been consumed since records begun.</p>
+                <div id="map"></div>
+
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCllVRLcIxnrW5Qv16HdtGmYDxC-PjdrAE&callback=initMap"></script>
+                <script>
+                    function initMap() {
+                      console.log("Init")
+                      var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 20,
+                        center: {lat: 50.937327, lng: -1.397707},
+                        mapTypeId: 'satellite',
+                        disableDefaultUI: true
+                      });
+
+                        var pizzaCircle = new google.maps.Circle({
+                          strokeColor: '#FF4444',
+                          strokeOpacity: 0.9,
+                          strokeWeight: 2,
+                          fillColor: '#FF0000',
+                          fillOpacity: 0.2,
+                          map: map,
+                          center: {lat: 50.937327, lng: -1.397707},
+                          radius: {{ radius }}
+                        });
+                    }
+                </script>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+        </div>
+
+    </div>
+{% endblock %}
