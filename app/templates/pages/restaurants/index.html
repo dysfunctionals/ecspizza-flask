@@ -1,0 +1,28 @@
+{% extends "common/page_base.html" %}  {# common/page_base.html extends layout.html #}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Restaurants</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for restaurant in restaurants %}
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">{{ restaurant.name }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center card-text"><img class="rounded img-fluid" src="../static/img/pizza.jpg"></p>
+                        <p class="text-center">
+                            <a class="btn btn-info" role="button" href="{{ url_for('restaurants.view',slug=restaurant.slug) }}">View Codes</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

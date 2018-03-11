@@ -3,3 +3,4 @@
 
 from .init_db import InitDbCommand
 from .add_users import AddUsersCommand
+from .add_restaurants import AddRestaurantsCommand

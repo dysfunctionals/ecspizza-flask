@@ -1,8 +1,3 @@
-# Copyright 2014 SolidBuilds.com. All rights reserved
-#
-# Authors: Ling Thio <ling.thio@gmail.com>
-
-
 from flask import Blueprint, jsonify, current_app as app, request, abort
 from app.models.user_models import User, AuthToken
 from app import db
