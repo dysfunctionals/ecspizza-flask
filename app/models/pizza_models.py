@@ -16,6 +16,7 @@ class Restaurant(db.Model):
     slug = db.Column(db.String(50), nullable=False, unique=True)
     name = db.Column(db.String(50), nullable=False)
     promo_codes = db.relationship('PromoCode', backref='restaurant', lazy=True)
+    pizzas = db.relationship('Pizza', backref="restaurant", lazy=True)
 
 class PromoCode(db.Model):
     __tablename__ = 'promo_codes'
@@ -29,6 +30,7 @@ class Pizza(db.Model):
     __tablename__ = 'pizzas'
     id = db.Column(db.Integer(), primary_key=True)
     pizza_type_id = db.Column(db.Integer(), db.ForeignKey('pizza_types.id'), nullable=False)
+    restaurant_id = db.Column(db.Integer(), db.ForeignKey('restaurant.id'), nullable=False)
     date_time = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer(), db.ForeignKey('users.id'), nullable=False)
 
