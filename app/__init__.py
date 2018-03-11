@@ -13,12 +13,14 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_sqlalchemy import SQLAlchemy
 from flask_user import UserManager, SQLAlchemyAdapter
 from flask_wtf.csrf import CSRFProtect
+from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 # Instantiate Flask extensions
 db = SQLAlchemy()
 csrf_protect = CSRFProtect()
 mail = Mail()
 migrate = Migrate()
+photos = UploadSet('photos', IMAGES)
 
 
 def create_app(extra_config_settings={}):
@@ -36,6 +38,9 @@ def create_app(extra_config_settings={}):
     app.config.update(extra_config_settings)
 
     # Setup Flask-Extensions -- do this _after_ app config has been loaded
+    # Extension 1: Flask-Uploads
+    app.config['UPLOADED_PHOTOS_DEST'] = 'uploads/pizza_img'
+    configure_uploads(app, photos)
 
     # Setup Flask-SQLAlchemy
     db.init_app(app)
@@ -53,9 +58,11 @@ def create_app(extra_config_settings={}):
     from app.views.misc_views import main_blueprint
     from app.views.api import api_blueprint
     from app.views.restaurants import restaurants_blueprint
+    from app.views.pizza import pizza_blueprint
     app.register_blueprint(main_blueprint)
     app.register_blueprint(api_blueprint, url_prefix='/api/v1')
     app.register_blueprint(restaurants_blueprint, url_prefix='/restaurants')
+    app.register_blueprint(pizza_blueprint, url_prefix='/pizza')
 
     #Make sure CSRF doesn't block our API requests
     csrf_protect.exempt(api_blueprint)
