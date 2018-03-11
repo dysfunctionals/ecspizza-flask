@@ -32,6 +32,7 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role', secondary='users_roles',
                             backref=db.backref('users', lazy='dynamic'))
     tokens = db.relationship('AuthToken', backref='users', lazy=True)
+    pizzas = db.relationship('Pizza', backref='users', lazy=True)
 
 
 class AuthToken(db.Model):
