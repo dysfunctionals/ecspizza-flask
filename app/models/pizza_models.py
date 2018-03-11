@@ -49,3 +49,6 @@ class Pizza(db.Model):
     @staticmethod
     def total_radius():
         return Pizza.total_area() ** 0.5
+
+    def serialize(self):
+        return self.__dict__

@@ -46,3 +46,17 @@ def login():
             "token": token.auth_token
     }
     return jsonify(d)
+
+@api_blueprint.route('/userpizzas/<uuid>')
+def userpizzas(uuid):
+    if not request.headers.has_key("Authorization"):
+        abort(403)
+
+    if AuthToken.query.filter_by(auth_token=request.headers.get("Authorization")).count() == 0:
+        abort(403)
+
+    user = User.query.filter_by(uuid=uuid).first_or_404()
+
+    d= user.pizzas
+
+    return jsonify(d)
