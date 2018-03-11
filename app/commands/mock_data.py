@@ -28,7 +28,7 @@ def mock_data():
                 pizza_type_id=random.randint(1,6),
                 restaurant_id=random.randint(1,9),
                 uuid=str(uuid.uuid4())
-                user_id=i,
+                user_id=i
             )
             db.session.add(pizza)
     db.session.commit()
