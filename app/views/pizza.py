@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, current_app as app
 from flask_user import current_user, login_required, roles_accepted
 from flask import Blueprint, render_template
 from app import photos
-from app.models.pizza_models import PizzaType
+from app.models.pizza_models import PizzaType, Pizza
 import uuid
 import datetime
 
@@ -25,7 +25,8 @@ def upload():
     if request.method == 'POST' and 'photo' in request.files:
         pizza_uuid = str(uuid.uuid4())
         pizza_type = request.form['type']
-        filename = photos.save(request.files['photo'], name=pizza_uuid)
+        filename = photos.save(request.files['photo'], name=pizza_uuid + '.')
+        return pizza_uuid
     else:
         pizza_types = PizzaType.query.order_by(PizzaType.name).all()
         return render_template('pages/pizza_upload.html', pizza_types=pizza_types)
