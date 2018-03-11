@@ -80,7 +80,8 @@ def create_app(extra_config_settings={}):
 
     # Setup Flask-User to handle user account related forms
     from .models.user_models import User, MyRegisterForm
-    from .views.misc_views import user_profile_page
+    from .views.misc_views \
+    import user_profile_page
 
     db_adapter = SQLAlchemyAdapter(db, User)  # Setup the SQLAlchemy DB Adapter
     user_manager = UserManager(db_adapter, app,  # Init Flask-User and bind to app
