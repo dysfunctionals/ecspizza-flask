@@ -120,3 +120,4 @@ app/local_settings.py
 
 #Uploaded files
 /static/uploads/
+/app/static/uploads
