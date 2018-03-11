@@ -1,0 +1,19 @@
+{% extends "common/page_base.html" %}  {# common/page_base.html extends layout.html #}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Pizza Verification</h1>
+                <h2>Checking if your pizza is a pizza:</h2>
+                <p>
+                    {% if verified == 'True' %}
+                    <p>Yep, that looks like a pizza to me!</p>
+                    {% else %}
+                    <p>Hmm, are you sure? That looks like it fits better in the category: {{ category }}</p>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

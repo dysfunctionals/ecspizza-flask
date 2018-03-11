@@ -22,6 +22,7 @@ def mock_data():
     for i in range(1,100):
         print(i)
         user = find_or_create_user(faker.first_name(), faker.last_name(), faker.email(), "Password1")
+
         for j in range(0, random.randint(0, 15)):
             pizza = Pizza(
                 date_time=faker.past_datetime(start_date="-30d", tzinfo=None),
