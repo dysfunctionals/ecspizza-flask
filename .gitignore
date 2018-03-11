@@ -119,4 +119,4 @@ app.sqlite
 app/local_settings.py
 
 #Uploaded files
-uploads
+/uploads/
