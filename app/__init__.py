@@ -7,7 +7,7 @@
 from datetime import datetime
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_mail import Mail
 from flask_migrate import Migrate, MigrateCommand
 from flask_sqlalchemy import SQLAlchemy
@@ -88,6 +88,10 @@ def create_app(extra_config_settings={}):
                                register_form=MyRegisterForm,  # using a custom register form with UserProfile fields
                                user_profile_view_function=user_profile_page,
     )
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('pages/404.html'), 404
 
     return app
 
