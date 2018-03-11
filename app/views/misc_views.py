@@ -38,9 +38,3 @@ def user_profile_page():
 def stats():
     radius = Pizza.total_radius()
     return render_template('pages/stats.html', radius=radius)
-
-
-@main_blueprint.route('/', defaults={'path': ''})
-@main_blueprint.route('/<path:path>')
-def catch_all(path):
-    return render_template('pages/404.html'), 404
