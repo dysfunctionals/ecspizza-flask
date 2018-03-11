@@ -10,7 +10,7 @@
                 <form method=POST enctype=multipart/form-data action="{{ url_for('pizza.upload') }}">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                     <label>Submit a centered image of your pizza: </label><input type="file" name="photo">
-                    <label>Select the type of pizza: </label><select name="types">
+                    <label>Select the type of pizza: </label><select name="type">
                         {% for type in pizza_types %}
                         <option value="{{ type.slug }}">{{ type.name }}</option>
                         {% endfor %}
