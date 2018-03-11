@@ -3,7 +3,7 @@ from flask import request, url_for
 from flask_user import current_user, login_required, roles_accepted
 
 from app import db
-from app.models.user_models import UserProfileForm
+from app.models.user_models import UserProfileForm, User
 from app.models.pizza_models import Pizza, PizzaType, Restaurant
 
 # When using a Flask app factory we must use a blueprint to avoid needing 'app' for '@app.route'
@@ -23,7 +23,17 @@ def home():
 @main_blueprint.route('/leaderboard')
 @login_required
 def leaderboard():
-    return render_template('pages/leaderboard.html')
+
+    query = "SELECT user_id, COUNT(*) AS amount FROM pizzas GROUP BY user_id ORDER BY amount DESC"
+    result = db.engine.execute(query)
+
+    data = []
+
+    for row in result:
+        user = User.query.get(row.user_id)
+        data.append({"name": user.first_name + " " + user.last_name, "amount": row.amount})
+
+    return render_template('pages/leaderboard.html', data=data)
 
 
 # The Admin page is accessible to users with the 'admin' role
