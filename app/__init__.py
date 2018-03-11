@@ -8,12 +8,14 @@ from datetime import datetime
 import os
 
 from flask import Flask, render_template
+from flask.json import JSONEncoder
 from flask_mail import Mail
 from flask_migrate import Migrate, MigrateCommand
 from flask_sqlalchemy import SQLAlchemy
 from flask_user import UserManager, SQLAlchemyAdapter
 from flask_wtf.csrf import CSRFProtect
 from flask_uploads import UploadSet, configure_uploads, IMAGES
+
 
 # Instantiate Flask extensions
 db = SQLAlchemy()
@@ -67,6 +69,8 @@ def create_app(extra_config_settings={}):
     #Make sure CSRF doesn't block our API requests
     csrf_protect.exempt(api_blueprint)
 
+    app.json_encoder = MyJSONEncoder
+
     # Define bootstrap_is_hidden_field for flask-bootstrap's bootstrap_wtf.html
     from wtforms.fields import HiddenField
 
@@ -95,6 +99,18 @@ def create_app(extra_config_settings={}):
 
     return app
 
+from app.models.pizza_models import Pizza
+
+class MyJSONEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Pizza):
+            return {
+                "pizza_type": obj.pizza_type.slug,
+                "pizza_photo": "http://www.google.com/",
+                "datetime": obj.date_time,
+                
+            }
+        return super(MyJSONEncoder, self).default(obj)
 
 def init_email_error_handler(app):
     """

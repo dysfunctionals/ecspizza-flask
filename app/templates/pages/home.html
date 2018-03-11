@@ -56,6 +56,15 @@
                                 {% endfor %}
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="type">Select restaurant: </label>
+                            <select name="restaurant" class="form-control">
+                                {% for res in restaurants %}
+                                    <option value="{{ res.slug }}">{{ res.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                         <input type="submit" class="btn">
                     </form>
                 </div>
@@ -70,7 +79,7 @@
                         <div class="card-body">
                           <h5 class="card-title">{{ pizza.date_time }}</h5>
                             <p class="card-text">Type: {{ pizza.pizza_type}}</p>
-                            <p class="card-text">Location: Pizzazz Pizza</p>
+                            <p class="card-text">Restaurant: {{ pizza.restaurant }}</p>
                             <p class="card-text text-center">
                                 <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
                             </p>
