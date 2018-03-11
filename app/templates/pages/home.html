@@ -63,40 +63,24 @@
                 </div>
             </div>
         </div>
-        <div class="card-deck" style="margin: 10px 0 0 0">
-          <div class="card">
-            <img class="card-img-top" src="static/img/pizza.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-                <p class="card-text">Type: Pepperoni Special</p>
-                <p class="card-text">Location: Pizzazz Pizza</p>
-                <p class="card-text text-center">
-                    <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
-                </p>
+
+        {% for pizza_batch in pizzas | batch(3, '&nbsp;') %}
+            <div class="card-deck" style="margin: 10px 0 0 0">
+                {% for pizza in pizza_batch %}
+                    <div class="card">
+                        <img class="card-img-top" src="static/img/pizza.jpg">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ pizza.date_time }}</h5>
+                            <p class="card-text">Type: {{ pizza.pizza_type}}</p>
+                            <p class="card-text">Location: Pizzazz Pizza</p>
+                            <p class="card-text text-center">
+                                <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="static/img/pizza.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-                <p class="card-text">Type: Pepperoni Special</p>
-                <p class="card-text">Location: Pizzazz Pizza</p>
-                <p class="card-text text-center">
-                    <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
-                </p>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="static/img/pizza.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-                <p class="card-text">Type: Pepperoni Special</p>
-                <p class="card-text">Location: Pizzazz Pizza</p>
-                <p class="card-text text-center">
-                    <div class="btn-group" role="group"><a class="btn btn-info" role="button" href="#">Edit&nbsp;</a><a class="btn btn-danger" role="button" href="#">Delete</a></div>
-                </p>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
+
     </div>
 {% endblock %}

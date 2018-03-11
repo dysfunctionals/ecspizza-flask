@@ -5,14 +5,17 @@ class PizzaType(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     slug = db.Column(db.String(50), nullable=False, unique=True)
     name = db.Column(db.String(50), nullable=False)
-    pizzas = db.relationship('Pizza', backref="pizza_types", lazy=True)
+    pizzas = db.relationship('Pizza', backref="pizza_type", lazy=True)
+
+    def __str__(self):
+        return self.name
 
 class Restaurant(db.Model):
     __tablename__ = 'restaurants'
     id = db.Column(db.Integer(), primary_key=True)
     slug = db.Column(db.String(50), nullable=False, unique=True)
     name = db.Column(db.String(50), nullable=False)
-    promo_codes = db.relationship('PromoCode', backref='restaurants', lazy=True)
+    promo_codes = db.relationship('PromoCode', backref='restaurant', lazy=True)
 
 class PromoCode(db.Model):
     __tablename__ = 'promo_codes'
