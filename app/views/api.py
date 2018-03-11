@@ -3,8 +3,10 @@
 # Authors: Ling Thio <ling.thio@gmail.com>
 
 
-from flask import Blueprint, jsonify, current_app as app, request
-from app.models.user_models import User
+from flask import Blueprint, jsonify, current_app as app, request, abort
+from app.models.user_models import User, AuthToken
+from app import db
+import random, string, datetime
 
 # When using a Flask app factory we must use a blueprint to avoid needing 'app' for '@app.route'
 api_blueprint = Blueprint('api', __name__, template_folder='templates')
@@ -30,10 +32,22 @@ def login():
     password = request.form['password']
     user = User.query.filter_by(email=email).first_or_404()
     verified = app.user_manager.verify_password(password, user)
-    status = 403
-    if verified:
-        status = 200
+
+    if not verified:
+        abort(403)
+
+    token_string = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(64))
+
+    token = AuthToken(user_id=user.id,
+                      auth_token=token_string,
+                      expiry=datetime.datetime.max)
+
+    db.session.add(token)
+    db.session.commit()
+
     d = {
-            "status": status
+            "status": 200,
+            "uuid": user.uuid,
+            "token": token.auth_token
     }
     return jsonify(d)
