@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col">
                 <h1 class="text-center">Upload Test</h1>
-                <form method=POST enctype=multipart/form-data action="{{ url_for('pizza.upload') }}">
+                <form method=POST enctype=multipart/form-data action="{{ url_for('pizza.upload_test') }}">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                     <input type=file name=photo>
                     <input type="submit">
