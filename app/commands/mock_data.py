@@ -27,7 +27,7 @@ def mock_data():
                 date_time=faker.past_datetime(start_date="-30d", tzinfo=None),
                 pizza_type_id=random.randint(1,6),
                 restaurant_id=random.randint(1,9),
-                uuid=str(uuid.uuid4())
+                uuid=str(uuid.uuid4()),
                 user_id=i
             )
             db.session.add(pizza)
