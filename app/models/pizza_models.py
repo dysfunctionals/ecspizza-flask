@@ -36,6 +36,7 @@ class Pizza(db.Model):
     restaurant_id = db.Column(db.Integer(), db.ForeignKey('restaurants.id'), nullable=False)
     date_time = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer(), db.ForeignKey('users.id'), nullable=False)
+    uuid = db.Column(db.String(36), nullable=False)
 
     @staticmethod
     def count_total():

@@ -1,0 +1,6 @@
+[submodule "verification/ecspizza-fingerprint"]
+	path = verification/ecspizza-fingerprint
+	url = git@github.com:dysfunctionals/ecspizza-fingerprint.git
+[submodule "verification/ecspizza-ispizza"]
+	path = verification/ecspizza-ispizza
+	url = git@github.com:dysfunctionals/ecspizza-ispizza.git

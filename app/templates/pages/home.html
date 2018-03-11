@@ -15,20 +15,18 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Column 1</th>
-                                    <th>Column 2</th>
-                                </tr>
-                            </thead>
                             <tbody>
                                 <tr>
-                                    <td>Cell 1</td>
-                                    <td>Cell 2</td>
+                                    <td>Pizza Streak 🍕🔥</td>
+                                    <td>{{ current_user.get_streak() }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Cell 3</td>
-                                    <td>Cell 4</td>
+                                    <td>Pizza this month</td>
+                                    <td>{{ current_user.pizza_month() }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Pizza</td>
+                                    <td>{{ current_user.total_pizza() }}</td>
                                 </tr>
                             </tbody>
                         </table>
