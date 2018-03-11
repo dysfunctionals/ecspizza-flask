@@ -10,16 +10,7 @@ import datetime
 pizza_blueprint = Blueprint('pizza', __name__, template_folder='templates')
 
 
-@pizza_blueprint.route('/upload_test', methods=['GET', 'POST'])
-@login_required
-def upload_test():
-    if request.method == 'POST' and 'photo' in request.files:
-        filename = photos.save(request.files['photo'])
-        return filename
-    return render_template('pages/upload_test.html')
-
-
-@pizza_blueprint.route('/new', methods=['GET', 'POST'])
+@pizza_blueprint.route('/new', methods=['POST'])
 @login_required
 def upload():
     if request.method == 'POST' and 'photo' in request.files:
@@ -35,6 +26,3 @@ def upload():
         db.session.add(pizza)
         db.session.commit()
         return pizza_uuid
-    else:
-        pizza_types = PizzaType.query.order_by(PizzaType.name).all()
-        return render_template('pages/pizza_upload.html', pizza_types=pizza_types)
