@@ -25,7 +25,8 @@ def mock_data():
         for j in range(0,random.randint(0,15)):
             pizza = Pizza(
                 date_time=faker.past_datetime(start_date="-30d", tzinfo=None),
-                pizza_type_id=random.randint(1,6)
+                pizza_type_id=random.randint(1,6),
+                user_id=i
             )
             db.session.add(pizza)
     db.session.commit()
