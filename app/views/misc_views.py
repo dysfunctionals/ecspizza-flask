@@ -4,7 +4,7 @@ from flask_user import current_user, login_required, roles_accepted
 
 from app import db
 from app.models.user_models import UserProfileForm
-from app.models.pizza_models import Pizza, PizzaType
+from app.models.pizza_models import Pizza, PizzaType, Restaurant
 
 # When using a Flask app factory we must use a blueprint to avoid needing 'app' for '@app.route'
 main_blueprint = Blueprint('main', __name__, template_folder='templates')
@@ -15,8 +15,9 @@ main_blueprint = Blueprint('main', __name__, template_folder='templates')
 @login_required
 def home():
     pizza_types = PizzaType.query.order_by(PizzaType.name).all()
+    restaurants = Restaurant.query.order_by(Restaurant.name).all()
     pizzas = Pizza.query.filter_by(user_id=current_user.id).all()
-    return render_template('pages/home.html', pizza_types=pizza_types,pizzas=pizzas)
+    return render_template('pages/home.html', pizza_types=pizza_types,pizzas=pizzas,restaurants=restaurants)
 
 
 @main_blueprint.route('/leaderboard')

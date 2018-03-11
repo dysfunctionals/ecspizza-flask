@@ -16,12 +16,13 @@ class AddRestaurantsCommand(Command):
 def create_pizza_types():
     """"Populate Pizza Types"""
 
-    add_pizza_type("Cheese and Tomato","cheeseandtomato")
-    add_pizza_type("Pepperoni","pepperoni")
-    add_pizza_type("Pepperoni Hot","pepperonihot")
-    add_pizza_type("Veggi Supreme","veggi")
-    add_pizza_type("Meat Feast","meatfeast")
-    add_pizza_type("Hawaiian","hawaiian")
+    add_pizza_type("Cheese and Tomato", "cheeseandtomato")
+    add_pizza_type("Pepperoni", "pepperoni")
+    add_pizza_type("Pepperoni Hot", "pepperonihot")
+    add_pizza_type("Veggi Supreme", "veggi")
+    add_pizza_type("Meat Feast", "meatfeast")
+    add_pizza_type("Hawaiian", "hawaiian")
+    add_pizza_type("Other", "other")
 
     db.session.commit()
 
