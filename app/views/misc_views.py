@@ -15,7 +15,8 @@ main_blueprint = Blueprint('main', __name__, template_folder='templates')
 @login_required
 def home():
     pizza_types = PizzaType.query.order_by(PizzaType.name).all()
-    return render_template('pages/home.html', pizza_types=pizza_types)
+    pizzas = Pizza.query.filter_by(user_id=current_user.id).all()
+    return render_template('pages/home.html', pizza_types=pizza_types,pizzas=pizzas)
 
 
 @main_blueprint.route('/leaderboard')
