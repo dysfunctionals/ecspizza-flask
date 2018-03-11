@@ -20,7 +20,8 @@ def upload():
 
         pizza = Pizza(pizza_type_id=pizza_type.id,
                       date_time=datetime.datetime.now(),
-                      user_id=current_user.id)
+                      user_id=current_user.id,
+                      uuid=pizza_uuid)
 
         filename = photos.save(request.files['photo'], name=pizza_uuid + '.')
         db.session.add(pizza)

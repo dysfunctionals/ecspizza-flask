@@ -4,7 +4,7 @@ from flask import current_app
 from flask_script import Command
 from faker import Faker
 from .add_users import find_or_create_user
-
+import uuid
 from app import db
 from app.models.user_models import *
 from app.models.pizza_models import *
@@ -26,7 +26,8 @@ def mock_data():
             pizza = Pizza(
                 date_time=faker.past_datetime(start_date="-30d", tzinfo=None),
                 pizza_type_id=random.randint(1,6),
-                user_id=i
+                user_id=i,
+                uuid=str(uuid.uuid4())
             )
             db.session.add(pizza)
     db.session.commit()
