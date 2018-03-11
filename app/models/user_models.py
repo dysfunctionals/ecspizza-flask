@@ -34,6 +34,13 @@ class User(db.Model, UserMixin):
     tokens = db.relationship('AuthToken', backref='users', lazy=True)
     pizzas = db.relationship('Pizza', backref='users', lazy=True)
 
+    def get_streak(self):
+        return 5
+    def total_pizza(self):
+        return 12
+    def pizza_month(self):
+        return 7
+
 
 class AuthToken(db.Model):
     __tablename__ = 'auth_tokens'
